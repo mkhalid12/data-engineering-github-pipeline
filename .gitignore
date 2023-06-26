@@ -8,6 +8,5 @@ aws-terraform/.terraform
 !aws-terraform/*.tf
 __pycache__
 .DS_Store
-data/*.zip
 
 dwh/postgres-data
