@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "data-integration"
+version = "0.1.0"
+description = ""
+authors = ["mkhalid12 <madiha.khalid12@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9.6"
+pyspark = "^3.4.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

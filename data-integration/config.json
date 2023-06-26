@@ -1,0 +1,51 @@
+{
+  "CORE": {
+    "DATA_DIR_PATH": "data",
+    "DATA_FILE_EXT": "*.json"
+  },
+  "SPARK": {
+    "APP_NAME": "MBITION-CHALLENGE",
+    "HOST": "local",
+    "PG_JAR_PATH": "resources/postgresql-42.6.0.jar"
+  },
+  "JOBS": {
+    "sta_github_issues": {
+      "FILE_PATH": "github/issues",
+      "SINK_TABLE": "sta_github.issues",
+      "CREATE_PARTITION_TABLE" : "True"
+    },
+    "sta_github_pull_requests": {
+      "FILE_PATH": "github/pull_requests",
+      "SINK_TABLE": "sta_github.pull_requests",
+      "CREATE_PARTITION_TABLE" : "True"
+    },
+    "sta_github_pull_requests_labels": {
+      "FILE_PATH": "github/pull_requests",
+      "SINK_TABLE": "sta_github.pull_requests_labels",
+      "CREATE_PARTITION_TABLE" : "True"
+    },
+     "stg_github_labels_metrics": {
+      "SRC_TABLE": "sta_github.pull_requests_labels",
+      "SINK_TABLE": "stg_github.labels_metrics",
+      "CREATE_PARTITION_TABLE" : "False"
+    },
+    "stg_github_pull_requests_metrics": {
+      "SRC_TABLE": "sta_github.issues",
+      "SRC_TABLE_2": "sta_github.pull_requests",
+      "SINK_TABLE": "stg_github.pull_requests_metrics",
+      "CREATE_PARTITION_TABLE" : "False"
+    }
+  },
+  "SINK": {
+    "DWH": {
+      "user": "postgres",
+      "password": "postgres",
+      "driver": "org.postgresql.Driver",
+      "database": "dwh",
+      "host": "0.0.0.0",
+      "port": "5438",
+      "url": "jdbc:postgresql://0.0.0.0:5438/dwh",
+      "stringtype": "unspecified"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+    postgres:
+        image: postgres:latest
+        restart: always
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        ports:
+          - '5438:5432'
+        volumes:
+          - ./dwh/postgres-data:/var/lib/postgresql/data
+          # copy the sql script to create tables
+          - ./dwh/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
+    jupyter:
+        image: jupyter/pyspark-notebook:latest
+        environment:
+            - JUPYTER_ENABLE_LAB=yes
+            - DWH_USER=postgres
+            - DWH_PASSWORD=postgres
+            - DWH_URL=jdbc:postgresql://host.docker.internal:5438/dwh
+            - RESOURCE_JAR=/home/jovyan/postgresql-42.6.0.jar
+        ports:
+          - "9999:8888"
+        volumes:
+          - ./notebook:/home/jovyan/
+        command: >
+          start.sh jupyter lab --LabApp.token=''
+        depends_on:
+          - postgres

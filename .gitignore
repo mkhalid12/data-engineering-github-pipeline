@@ -1,0 +1,13 @@
+data-integration/data/github/*
+dwh/data/*
+.idea
+venv
+notebook/*
+!notebook/*.ipynb
+aws-terraform/.terraform
+!aws-terraform/*.tf
+__pycache__
+.DS_Store
+data/*.zip
+
+dwh/postgres-data
