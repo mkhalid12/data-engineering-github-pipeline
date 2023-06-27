@@ -32,6 +32,8 @@ Which labels are most commonly assigned to PRs, and what is their relative distr
 What is the average and median of the total number of lines changed per milestone?
 Considering these statements, I have created the following data model which will simplify the analysis with this pre-aggregated data.
 
+![dependency_graph.jpg](images%2Fdependency_graph.jpg)
+
 ### DWH Consideration:
 
 In the data source, the `number` attribute uniquely identifies the issue and pull_request within its repository. Thus "number" and "repo_name" is the main Primary Key constraints throughout the Data model creation.
