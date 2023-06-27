@@ -45,14 +45,11 @@ According to the GitHub docs https://docs.github.com/en/rest/issues/issues?apiVe
 Every pull request is an issue, but not every issue is a pull request. 
 For this reason, "Issues" endpoints may return both issues and pull requests in the response. 
 ```
-To answer metric number 1&2&4) Linked between Issue and PR 
+To answer metric number 1,2&4) Linked between Issue and PR 
 the pull_requests linked with the issue is extracted from the issue.pull_requests 
 But this key only provides a URL. To extract further pull_request data that needs to join with the `pull_requests` table. This is why `stg_github.pull_requests_metrics` is required. The granularity of the `pull_request_id` also calculated the time interval between the linked issue being created and to pull_request being merged. 
 
-You can identify pull requests by the pull_request key. 
-Be aware that the id of a pull request returned from the "Issues" endpoints will be an issue id. To find out the pull request id, use the "List pull requests" endpoint.
-
-3The labels are available as nested array JSON structure in pull_requests.json source. This needs to flatten and finally calculate for each label count the number of pull_requests this label is assigned. This aggregate data is available  in `stg_github.labels_metrics`
+3) The labels are available as nested array JSON structure in pull_requests.json source. This needs to flatten and finally calculate for each label count the number of pull_requests this label is assigned. This aggregate data is available  in `stg_github.labels_metrics`
 
 The tables/jobs dependency graph is shown in the following diagram. And detailed DDL script is provided in this create_table.sql script.
 
