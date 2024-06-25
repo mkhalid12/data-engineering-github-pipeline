@@ -1,5 +1,5 @@
 
-# MBITION TECHNICAL CHALLENGE SOLUTION
+# Data Engineering End to End Project for Github Issues
 
 In this project, I developed an end-to-end data-warehouse pipeline to integrate and analyse the GitHub issues and pull requests.
 
